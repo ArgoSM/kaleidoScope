@@ -1,0 +1,101 @@
+.app-splash-screen {
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+
+  .splash-bg {
+      width: 100%;
+      height: 110%;
+      position: absolute;
+      display: flex;
+      filter: blur(10px) brightness(50%) contrast(140%);
+      animation: fadeout 4s;
+  }
+  
+  .app-label {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 4em;;
+  }
+  
+  .app-splash-inner {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    animation: fadein 1.2s ease-in;
+  }
+  
+  .app-logo {
+    background: url("./../../assets/ghost.svg");
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size:contain;
+    width: 70px;
+    height: 70px;
+  }
+
+  @keyframes fadein {
+      0% {
+          opacity: 0%;
+      }
+      100% {
+          opacity: 100%;
+      }
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+@-moz-keyframes fadeout {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}

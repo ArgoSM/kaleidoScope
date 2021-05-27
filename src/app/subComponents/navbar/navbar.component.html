@@ -1,0 +1,22 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <div *ngIf='loader.isLoading | async' class="pgb_holder">
+            <mat-progress-bar class="page-progress" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <a class="navbar-brand" href="#" routerLink="/home" position="inline">
+            <img src="./../../../assets/ghost.svg" width="30px" height="30px">
+            <p>kaleidoScope</p>
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#" routerLink="/tileView/popular">Popular</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" routerLink="/tileView/recents">Recently Added</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropbtn">Genres</a>
+                <div class="dropdown-content">
+                  <a class="dropdown-item nav-link" *ngFor="let genre of genreList" (click)="onSelect(genre)">{{genre}}</a>
+                </div>
+            </li>
+        </ul>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" #searchInput [(ngModel)]="term">
+    </nav>
+</header>

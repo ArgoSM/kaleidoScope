@@ -1,0 +1,6 @@
+<div class="parent">
+  <app-details *ngIf="show_deets" [details]="deet" (closeDeets)="closeDeets()" ></app-details>
+  <div class="grid-container scroll-hide">
+    <app-tile *ngFor="let anime of animeList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+  </div>
+</div>

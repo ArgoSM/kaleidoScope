@@ -1,0 +1,21 @@
+<app-details *ngIf="show_deets" [details]="deet" (closeDeets)="closeDeets()"></app-details>
+<div class="parent scroll-hide">
+    <div *ngIf="show" class="video_container">
+        <video src={{src}} #video autoplay loop></video>
+        <div class="layer"></div>
+    </div>
+    <div class="page">
+        <div class="button_holder">
+            <button class="watch_button" (click)="contWatch()"><i class="watch_icon"></i>Continue Watching</button>
+            <img src="./../../assets/volume_mute.svg" class="mute" (click)="muteVid()">
+        </div>
+        <p>Recents</p>
+        <div class="list_container scroll-hide">
+            <app-tile *ngFor="let anime of recentList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+        </div>
+        <p>Popular</p>
+        <div class="list_container scroll-hide">
+            <app-tile *ngFor="let anime of popularList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+.parent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    background: none;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding-top: 35%;
+    padding-bottom: 40px;
+    z-index: 3;
+}
+
+.video_container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: max-content;
+}
+
+.video_container video {
+    width: 100%;
+}
+
+.layer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #040404 0%, #04040475 40%, #04040410 85%, #04040400 100%);
+}
+
+.button_holder {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 3%;
+}
+
+.watch_icon {
+    content: url('./../../assets/play-button-arrowhead-black.svg');
+    width: 14px;
+    height: 14px;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.watch_button {
+    height: min-content;
+    width: max-content;
+    display: flex;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: black;
+    background-color: #f4f4e6d5;
+    border-radius: 5px;
+    border: 0;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px #040404;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.watch_button:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 15px #040404;
+}
+
+.mute {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    margin-left: 30px;
+    filter: drop-shadow(2px 2px 5px #040404);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.mute:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 10px #040404);
+}
+
+p {
+    width: 100%;
+    color: #F4F4E6;
+    outline: 0;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 10%;
+    text-shadow: 2px 2px 10px #040404;
+}
+
+.list_container {
+    width: 100%;
+    height: max-content;
+    padding-left: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    overflow-x: scroll;
+}

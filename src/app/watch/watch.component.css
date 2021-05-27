@@ -1,0 +1,358 @@
+.parent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 51;
+    background-color: #040404;
+}
+
+app-loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    height: 100%;
+    overflow: auto;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+.inactive {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.header-block {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: min-content;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    background: linear-gradient(rgba(0,0,0,0.7), transparent);
+    z-index: 52;
+}
+
+.back-arrow {
+    cursor: pointer;
+    padding: 3px;
+    height: 45px;
+    width: 35px;
+}
+
+.header-text{
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-text h6 {
+    margin-bottom: 1px;
+    line-height: 1;
+    color: #F4F4E6;
+    font-weight: bold;
+    font-size: 20px;
+    outline: 0;
+    border: 0;
+}
+
+.header-text p {
+    margin:1px;
+    line-height: 1;
+    outline: 0;
+    border: 0;
+    font-size: 14px;
+    color: #cbcbc0;
+}
+
+.settings_container {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: max-content;
+    text-align: right;
+}
+
+.settings {
+    margin-left: auto;
+    cursor: pointer;
+    padding: 3px;
+    height: 45px;
+    width: 35px;
+}
+
+.settings:hover ~.setting_drop{
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.setting_drop:hover {
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.setting_drop {
+    visibility: hidden;
+    height: 0;
+    color: #F4F4E6;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+}
+
+.setting_drop p {
+    cursor: pointer;
+}
+
+.option{
+    align-self:flex-end;
+    font-size: 16px;
+    margin: 2px;
+    outline: 0;
+    border: 0;
+    width: max-content;
+    height: min-content;
+    padding: 0px 10px 0px 10px;
+    border-radius: 14px;
+    background: rgba(111, 111, 111, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.speed:hover ~.sub_drop_speed{
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.quality:hover ~.sub_drop_quality{
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.sub_drop_speed:hover {
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.sub_drop_quality:hover {
+    transform: scaleY(1);
+    visibility: visible;
+    height: min-content;
+}
+
+.sub_drop_speed {
+    width: max-content;
+    height: 0;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+}
+
+.sub_drop_quality {
+    width: 100%;
+    height: 0;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+}
+
+.button {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 13px;
+    align-self:flex-end;
+    display: block;
+    width: max-content;
+    padding: 0px 5px 0px 5px;
+    border-radius: 14px;
+    background: #f15156bf;
+    backdrop-filter: blur(10px);
+}
+
+.playbackControl {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.playbackControl img {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: min-content;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(111, 111, 111, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.controls img {
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    margin: 8px;
+}
+
+.time {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    height: 4px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    outline: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.time::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background: #F4F4E6;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+  
+.time::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background: #F4F4E6;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.time-show {
+    font-size: 12px;
+    color: #F4F4E6;
+    margin-left: 5px;
+    margin-right: 2px;
+}
+
+.vol-block {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+
+.volume:hover ~.volume-container {
+    display: block;
+}
+
+.volume-container:hover {
+    display: block;
+}
+
+.volume-container {
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    right: -48px;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+
+.volumeControl {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 2px;
+    background: #F15156;
+    backdrop-filter: blur(10px);
+    border-radius: 1px;
+    cursor: pointer;
+    justify-content: center;
+    margin-left: 18px;
+}
+
+.volumeControl::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #F4F4E6;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+  
+.volumeControl::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #F4F4E6;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}

@@ -1,0 +1,40 @@
+<div class="parent">
+    <video src={{src}} autoplay #videoPlayer></video>
+    <div class="overlay" #overLay>
+        <div class="header-block">
+            <img src="./../../assets/left-arrow.svg" class="back-arrow" (click)="goBack()">
+            <div class="header-text">
+                <h6>{{deet.title}}</h6>
+                <p>Episode: {{ep}}</p>
+            </div>
+            <div class="settings_container">
+                <img class="settings" src="./../../assets/settings.svg">
+                <div class="setting_drop">
+                    <p class="option speed">Playback Speed</p>
+                    <div class="sub_drop_speed">
+                        <p *ngFor="let p of playSpeed" class="button" (click)="speedChange(p)">{{p}}</p>
+                    </div>
+                    <p class="option quality">Quality</p>
+                    <div class="sub_drop_quality">
+                        <p *ngFor="let s of srcKeys()" class="button" (click)="qualityChange(s)">{{s}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!loading" class="playbackControl">
+            <img class="play-pause" src={{playImg}} (click)="playClick()">
+        </div>
+        <app-loader *ngIf="loading"></app-loader>
+        <div class="controls">
+            <input type="range" class="time" #timeMark value="0" step="0.05">
+            <span class="time-show">{{timeLeft}}</span>
+            <div class="vol-block" >
+                <img class="volume" src={{volImg}} (click)="onMute()">
+                <div class="volume-container">
+                    <input type="range" class="volumeControl" #volumeControl min="0" max="100" value="100" step="20" orient="vertical">
+                </div>
+            </div>
+            <img class="fullscreen" src={{fullImg}} (click)="onFullscreen()">
+        </div>
+    </div>
+</div>

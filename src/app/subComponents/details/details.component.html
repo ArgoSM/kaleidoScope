@@ -1,0 +1,28 @@
+<div class="page">
+    <div class="maincard" (clickOutside)="ClickOutside()" 
+        style="background: url({{details.image}});
+        background-size: contain; 
+        background-repeat: no-repeat; 
+        background-position: left top; ">
+        <div class="text-area">
+            <div class="titles">
+                <h2>{{details.title}}</h2>
+                <h6>{{details.Othername}}</h6>
+            </div>
+            <div class="tab-switch">
+                <p class="button" (click)="showAbout=true; showEpisodes=false"><i class="button_icon about_icon"></i>ABOUT</p>
+                <p class="button" *ngIf="!movie" (click)="showEpisodes=true; showAbout=false"><i class="button_icon episodes_icon"></i>EPISODES</p>
+                <p class="button" *ngIf="movie" (click)="watch('1')"><i class="button_icon watch_icon"></i>WATCH</p>
+            </div>
+            <div class="summary custom_scroll" *ngIf="showAbout">{{details.summary}}</div>
+            <div class="episodes custom_scroll" *ngIf="showEpisodes">
+                <p *ngFor="let ep of episodes" class="episode" (click)="watch(ep)">{{ep}}</p>
+            </div>
+            <div class="others" *ngIf="showAbout" >
+                <p class="button">{{details.released}}</p>
+                <p class="button">{{details.status}}</p>
+                <p class="button" *ngFor="let genre of details.genres.split(',')">{{genre}}</p>
+            </div>
+        </div>
+    </div>
+</div>
