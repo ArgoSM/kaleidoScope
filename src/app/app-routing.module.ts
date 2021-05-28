@@ -8,7 +8,7 @@ import { DetailsResolverGuard } from './subComponents/details/details-resolver.g
 
 const routes: Routes = [
   { path:"home",component: HomeComponent },
-  { path:"tileView/:id",component: TileViewComponent },
+  { path:"tileView/:id/:page",component: TileViewComponent },
   { path:"watch/:id/:ep",component: WatchComponent, resolve: { watch: WatchResolverGuard, detail: DetailsResolverGuard }}, 
   { path:"",redirectTo:"/home",pathMatch:"full" }
 ];

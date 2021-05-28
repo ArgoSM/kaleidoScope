@@ -67,7 +67,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       if(e.keyCode == 13) {
         e.preventDefault();
         if(this.term!=null){
-          this.router.navigate(['/tileView',"search"], { queryParams: { term: this.term }});
+          this.router.navigate(['/tileView',"search","1"], { queryParams: { term: this.term }});
       }}
     });
   }
@@ -75,6 +75,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { }
 
   onSelect(genre:string) {
-    this.router.navigate(['/tileView',genre]);
+    this.router.navigate(['/tileView',genre,"1"]);
   }
 }

@@ -14,14 +14,23 @@ export class TileViewComponent implements OnInit {
 
   animeList:anime[]=[];
   deet:anime;
+  id:string="";
+  term:string="";
   show_deets:boolean=false;
+  show_prev=false;
+  show_next=false;
+  page: number=1;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id:string = params['id'];
+      this.id=params['id'];
+      this.page=parseInt(params['page']);
+      this.show_prev=false;
+      if(this.page>1) 
+        this.show_prev=true;
       this.animeList=null;
       this.show_deets=false;
-      switch(id) {
+      switch(this.id) {
           case "popular": {
             this.popular();
             break;
@@ -32,12 +41,13 @@ export class TileViewComponent implements OnInit {
           }
           case "search": {
             this.route.queryParams.subscribe(data => {
-              this.search(data['term']);
+              this.term=data['term'];
+              this.search(this.term);
             });
             break;
           }
           default: {
-            this.genre(id);
+            this.genre(this.id);
           }
         }
     });
@@ -60,25 +70,25 @@ export class TileViewComponent implements OnInit {
   }
 
   popular() {
-    this.bknd.getPopular().subscribe(data=> {
+    this.bknd.getPopular(this.page.toString()).subscribe(data=> {
       this.listData(data);
     });
   }
 
   recents() {
-    this.bknd.getRecents().subscribe(data=> {
+    this.bknd.getRecents(this.page.toString()).subscribe(data=> {
       this.listData(data);
     });
   }
 
   genre(genre:string) {
-    this.bknd.getGenre(genre).subscribe(data=> {
+    this.bknd.getGenre(genre,this.page.toString()).subscribe(data=> {
       this.listData(data);
     });
   }
 
   search(term: string) {
-    this.bknd.getSearch(term).subscribe(data=> {
+    this.bknd.getSearch(term, this.page.toString()).subscribe(data=> {
       this.listData(data);
     });
   }
@@ -89,5 +99,15 @@ export class TileViewComponent implements OnInit {
       let a = Object.assign(new anime(),data["results"][d]);
       this.animeList.push(a);
     }
+    this.show_next=false;
+    if(this.animeList.length==20)
+      this.show_next=true;
+  }
+
+  pager(n) {
+    if(this.id=="search")
+      this.router.navigate(['/tileView',"search",n], { queryParams: { term: this.term }});
+    else
+      this.router.navigate(['/tileView',this.id,n]);
   }
 }

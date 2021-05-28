@@ -8,24 +8,22 @@ import { anime } from './interfaces/anime';
 })
 export class BkndService {
 
-  private page_count: number=1; 
-
   constructor(private http:HttpClient ) { }
 
-  getPopular() {
-    return this.http.get(environment.popular+this.page_count.toString());
+  getPopular(page: string) {
+    return this.http.get(environment.popular+page);
   }
 
-  getRecents() {
-    return this.http.get(environment.recentadd+this.page_count.toString());
+  getRecents(page: string) {
+    return this.http.get(environment.recentadd+page);
   }
 
-  getSearch(searchTerm: string) {
-    return this.http.get(environment.search+searchTerm+"/"+this.page_count.toString());
+  getSearch(searchTerm: string, page: string) {
+    return this.http.get(environment.search+searchTerm+"/"+page);
   }
 
-  getGenre(genre: string) {
-    return this.http.get(environment.genre+genre+"/"+this.page_count.toString());
+  getGenre(genre: string, page: string) {
+    return this.http.get(environment.genre+genre+"/"+page);
   }
 
   getDetails(id: string){

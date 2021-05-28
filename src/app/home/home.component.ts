@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.show=true;
     }
 
-    this.bknd.getPopular().subscribe(data=> {
+    this.bknd.getPopular("1").subscribe(data=> {
       this.popularList=[];
       for (let d in data["results"]){
         let a = Object.assign(new anime(),data["results"][d]);
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
     
-    this.bknd.getRecents().subscribe(data=> {
+    this.bknd.getRecents("1").subscribe(data=> {
       this.recentList=[];
       for (let d in data["results"]){
         let a = Object.assign(new anime(),data["results"][d]);
