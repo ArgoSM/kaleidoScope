@@ -12,10 +12,22 @@
         <p>Recents</p>
         <div class="list_container scroll-hide">
             <app-tile *ngFor="let anime of recentList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+            <div class="last_tile">
+                <div class="child_container" routerLink="/tileView/recents/2">
+                    <p>Explore More</p>
+                    <img src="./../../assets/right-arrow-white.svg">
+                </div>
+            </div>
         </div>
         <p>Popular</p>
         <div class="list_container scroll-hide">
             <app-tile *ngFor="let anime of popularList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+            <div class="last_tile">
+                <div class="child_container" routerLink="/tileView/popular/2">
+                    <p>Explore More</p>
+                    <img src="./../../assets/right-arrow-white.svg">
+                </div>
+            </div>
         </div>
     </div>
 </div>

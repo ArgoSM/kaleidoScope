@@ -23,7 +23,11 @@
             </div>
         </div>
         <div *ngIf="!loading" class="playbackControl">
-            <img class="play-pause" src={{playImg}} (click)="playClick()">
+            <div class="playback_container">
+                <img class="playback_others left" src="./../../assets/rewind.svg" (click)="skip(-10)">
+                <img class="play_pause" src={{playImg}} (click)="playClick()">
+                <img class="playback_others right" src="./../../assets/fast-forward.svg" (click)="skip(10)">
+            </div>
         </div>
         <app-loader *ngIf="loading"></app-loader>
         <div class="controls">

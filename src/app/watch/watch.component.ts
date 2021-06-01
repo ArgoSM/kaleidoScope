@@ -62,12 +62,15 @@ export class WatchComponent implements OnInit, AfterViewInit {
     this.showFoo();
     this.loading=false;
 
+    this.keyboardListen();
+    $(window).mousemove(()=>{this.showFoo();});
+
     if(this.cookie.check('time')){
       if(this.cookie.get('id')==this.deet.id && this.cookie.get('ep')==this.ep){
         this.video.currentTime=parseInt(this.cookie.get('time'));
       }
     }
-
+    this.cookie.deleteAll();
     this.cookie.set('id',this.deet.id);
     this.cookie.set('ep',this.ep);
     this.cookie.set('src',this.src);
@@ -83,15 +86,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
     this.video.addEventListener('waiting', ()=>{this.loading=true;});
     this.video.addEventListener('seeking', ()=> {this.loading=true;});
-    this.video.addEventListener('loadedmetadata',()=>{this.loading=false;});
+    this.video.addEventListener('loadeddata',()=>{this.loading=false;});
     this.video.addEventListener('seeked', ()=>{this.loading=false;});
-
-    $(window).mousemove(()=>{this.showFoo();});
-
-    $(window).keypress((e)=> {
-      if (e.which == 32) 
-        this.playClick();
-    });
 
     this.vol.addEventListener('input', ()=>{
       this.video.volume = Number(this.vol.value)/100;
@@ -105,13 +101,42 @@ export class WatchComponent implements OnInit, AfterViewInit {
     })
   }
 
+  keyboardListen() {
+    window.addEventListener('keydown',(e)=> {
+      switch(e.which) {
+        case 70: {
+          this.onFullscreen();
+          break;
+        }
+        case 77: {
+          this.onMute();
+          break;
+        }
+        case 32: {
+          this.playClick();
+          break;
+        }
+        case 39: {
+          this.skip(10);
+          break;
+        }
+        case 37: {
+          this.skip(-10);
+          break;
+        }
+      }
+    });
+  }
+
   playClick(){
     if(this.video.paused){
       this.playImg="./../../assets/pause.svg";
       this.video.play();
+      this.showFoo();
     } else {
       this.playImg="./../../assets/play-button-arrowhead.svg";
       this.video.pause();
+      this.showFoo();
     }
   }
 
@@ -183,7 +208,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
       if (!this.video.paused) {
       $(".overlay").addClass("inactive");
       this.idleState = true;
-    }}, 4000);
+    }}, 3000);
   }
 
   speedChange(speed:number) {
@@ -207,5 +232,11 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
   srcKeys() {
     return Array.from(this.srcMap.keys());
+  }
+
+  skip(t:number) {
+    let skippedTime=this.video.currentTime+t;
+    if(skippedTime>=0 && skippedTime<=this.video.duration)
+      this.video.currentTime=skippedTime;
   }
 }

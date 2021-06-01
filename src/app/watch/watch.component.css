@@ -172,10 +172,14 @@ video {
     align-self:flex-end;
     display: block;
     width: max-content;
-    padding: 0px 6px 0px 6px;
+    padding: 4px 8px 4px 8px;
     border-radius: 10px;
     background: #f15156bf;
     backdrop-filter: blur(10px);
+}
+
+.button:active {
+    background: #f15156;
 }
 
 .playbackControl {
@@ -186,7 +190,15 @@ video {
     place-items: center;
 }
 
-.playbackControl img {
+.plaback_container {
+    width: max-content;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.play_pause {
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
     background: none;
     border: 0;
@@ -194,7 +206,28 @@ video {
     cursor: pointer;
     width: 90px;
     height: 90px;
-    margin: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.playback_others {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+}
+
+.right:active {
+    transform: rotate(75deg);
+}
+
+.left:active {
+    transform: rotate(-75deg);
 }
 
 .controls {

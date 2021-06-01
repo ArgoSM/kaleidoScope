@@ -113,3 +113,36 @@ p {
     flex-direction: row;
     overflow-x: scroll;
 }
+
+.last_tile {
+    padding-right: 90px;
+    padding-left: 90px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: max-content;
+    background: linear-gradient(to left, #040404 0%, #0404049a 65%, #04040400);
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.child_container {
+    width: min-content;
+    height: max-content;
+    color: #F4F4E6;
+    display: block;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.child_container:hover {
+    transform: scale(1.07);
+}
+
+.child_container img {
+    width: 30px;
+    height: 30px;
+    justify-self: center;
+}
