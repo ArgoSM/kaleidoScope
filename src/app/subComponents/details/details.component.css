@@ -35,6 +35,15 @@
     color: #F4F4E6;
 }
 
+.otherstuff {
+    font-size: 13px;
+    font-weight: 500;
+    color: #f4f4e6a5;
+    margin: 0;
+    outline: 0;
+    text-transform: uppercase;
+}
+
 .tab-switch{
     width: min-content;
     height: min-content;
@@ -77,6 +86,10 @@
     border-radius: 10px;
     font-size: 13px;
     cursor: pointer;
+}
+
+.button:active {
+    background-color: #d3d3c9;
 }
 
 .button_icon {

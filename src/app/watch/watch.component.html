@@ -8,13 +8,14 @@
                 <p>Episode: {{ep}}</p>
             </div>
             <div class="settings_container">
-                <img class="settings" src="./../../assets/settings.svg">
-                <div class="setting_drop">
-                    <p class="option speed">Playback Speed</p>
+                <div class="drop_container">
+                    <img class="settings speed" src="./../../assets/speedometer.svg">
                     <div class="sub_drop_speed">
                         <p *ngFor="let p of playSpeed" class="button" (click)="speedChange(p)">{{p}}</p>
                     </div>
-                    <p class="option quality">Quality</p>
+                </div>
+                <div class="drop_conatiner">
+                    <img class="settings sett" src="./../../assets/settings.svg">
                     <div class="sub_drop_quality">
                         <p *ngFor="let s of srcKeys()" class="button" (click)="qualityChange(s)">{{s}}</p>
                     </div>

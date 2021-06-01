@@ -36,4 +36,8 @@ export class DetailsComponent implements OnInit {
   ClickOutside() {
     this.closeDeets.emit();
   }
+
+  routeGenre(genre:string) {
+    this.router.navigate(['/tileView',genre,"1"]);
+  }
 }

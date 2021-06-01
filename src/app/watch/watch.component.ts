@@ -88,6 +88,11 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
     $(window).mousemove(()=>{this.showFoo();});
 
+    $(window).keypress((e)=> {
+      if (e.which == 32) 
+        this.playClick();
+    });
+
     this.vol.addEventListener('input', ()=>{
       this.video.volume = Number(this.vol.value)/100;
       this.lastVol=this.video.volume;
@@ -152,9 +157,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
   timeUpdate() {
     let seconds = this.video.duration - this.video.currentTime;
-    let h,s;
-    if (this.video.duration/3600>0) { h=14; s=5 }
-    else { h=11; s=8 }
+    let h=11,s=8;
+    if (1>seconds/3600) { h=14; s=5 }
     this.timeLeft=new Date(seconds * 1000).toISOString().substr(h,s);
   }
 

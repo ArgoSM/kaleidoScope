@@ -8,6 +8,7 @@
             <div class="titles">
                 <h2>{{details.title}}</h2>
                 <h6>{{details.Othername}}</h6>
+                <p class="otherstuff">{{details.released}} {{details.status}}</p>
             </div>
             <div class="tab-switch">
                 <p class="button" (click)="showAbout=true; showEpisodes=false"><i class="button_icon about_icon"></i>ABOUT</p>
@@ -19,9 +20,7 @@
                 <p *ngFor="let ep of episodes" class="episode" (click)="watch(ep)">{{ep}}</p>
             </div>
             <div class="others" *ngIf="showAbout" >
-                <p class="button">{{details.released}}</p>
-                <p class="button">{{details.status}}</p>
-                <p class="button" *ngFor="let genre of details.genres.split(',')">{{genre}}</p>
+                <p class="button" *ngFor="let genre of details.genres.split(',')" (click)="routeGenre(genre)">{{genre}}</p>
             </div>
         </div>
     </div>
