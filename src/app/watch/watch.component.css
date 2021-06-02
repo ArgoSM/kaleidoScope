@@ -57,6 +57,7 @@ video {
 .back-arrow {
     cursor: pointer;
     padding: 3px;
+    content: url('./../../assets/left-arrow.svg');
     height: 45px;
     width: 35px;
 }
@@ -104,6 +105,14 @@ video {
     padding: 3px;
     height: 40px;
     width: 30px;
+}
+
+.speed {
+    content: url('./../../assets/speedometer.svg');
+}
+
+.sett {
+    content: url('././../../assets/settings.svg');
 }
 
 .drop_container {
@@ -210,16 +219,33 @@ video {
     margin-right: 40px;
 }
 
+.play {
+    content: url('./../../assets/play-button-arrowhead.svg');
+}
+
+.pause {
+    content: url('./../../assets/pause.svg');
+}
+
 .playback_others {
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
     background: none;
     border: 0;
     outline: 0;
     cursor: pointer;
+    margin-bottom: 20px;
     width: 60px;
     height: 60px;
     transform: rotate(0deg);
     transition: transform 0.2s ease;
+}
+
+.left {
+    content: url('./../../assets/rewind.svg');
+}
+
+.right {
+    content: url('./../../assets/fast-forward.svg');
 }
 
 .right:active {
@@ -307,6 +333,27 @@ video {
     position: relative;
 }
 
+.volume {
+    background: none;
+    cursor: pointer;
+}
+
+.volume_normal {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-left: 10px;
+    content: url('./../../assets/volume.svg');
+}
+
+.mute {
+    width: 16px;
+    height: 16px;
+    margin-right: 9px;
+    margin-left: 10px;
+    content: url('./../../assets/volume_mute.svg');
+}
+
 .volume:hover ~.volume-container {
     display: block;
 }
@@ -357,4 +404,20 @@ video {
     background: #F4F4E6;
     backdrop-filter: blur(10px);
     cursor: pointer;
+}
+
+.fullscreen {
+    width: 18px;
+    height: 18px;
+    margin: 7px;
+    background: none;
+    cursor: pointer;
+}
+
+.full {
+    content: url('./../../assets/fullscreen.svg');
+}
+
+.small {
+    content: url('./../../assets/fullscreen_close.svg');
 }

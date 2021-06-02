@@ -142,7 +142,8 @@ p {
     transform: scale(1.07);
 }
 
-.child_container img {
+.explore {
+    content: url('./../../assets/right-arrow-white.svg');
     width: 30px;
     height: 30px;
     justify-self: center;

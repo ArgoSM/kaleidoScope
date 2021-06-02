@@ -2,20 +2,20 @@
     <video src={{src}} autoplay #videoPlayer></video>
     <div class="overlay" #overLay>
         <div class="header-block">
-            <img src="./../../assets/left-arrow.svg" class="back-arrow" (click)="goBack()">
+            <i class="back-arrow" (click)="goBack()"></i>
             <div class="header-text">
                 <h6>{{deet.title}}</h6>
                 <p>Episode: {{ep}}</p>
             </div>
             <div class="settings_container">
                 <div class="drop_container">
-                    <img class="settings speed" src="./../../assets/speedometer.svg">
+                    <i class="settings speed"></i>
                     <div class="sub_drop_speed">
                         <p *ngFor="let p of playSpeed" class="button" (click)="speedChange(p)">{{p}}</p>
                     </div>
                 </div>
                 <div class="drop_conatiner">
-                    <img class="settings sett" src="./../../assets/settings.svg">
+                    <i class="settings sett"></i>
                     <div class="sub_drop_quality">
                         <p *ngFor="let s of srcKeys()" class="button" (click)="qualityChange(s)">{{s}}</p>
                     </div>
@@ -24,22 +24,22 @@
         </div>
         <div *ngIf="!loading" class="playbackControl">
             <div class="playback_container">
-                <img class="playback_others left" src="./../../assets/rewind.svg" (click)="skip(-10)">
-                <img class="play_pause" src={{playImg}} (click)="playClick()">
-                <img class="playback_others right" src="./../../assets/fast-forward.svg" (click)="skip(10)">
+                <i class="playback_others left" (click)="skip(-10)"></i>
+                <i class="play_pause pause" (click)="playClick()"></i>
+                <i class="playback_others right" (click)="skip(10)"></i>
             </div>
         </div>
         <app-loader *ngIf="loading"></app-loader>
         <div class="controls">
             <input type="range" class="time" #timeMark value="0" step="0.05">
             <span class="time-show">{{timeLeft}}</span>
-            <div class="vol-block" >
-                <img class="volume" src={{volImg}} (click)="onMute()">
+            <div class="vol-block">
+                <i class="volume volume_normal" (click)="onMute()"></i>
                 <div class="volume-container">
                     <input type="range" class="volumeControl" #volumeControl min="0" max="100" value="100" step="20" orient="vertical">
                 </div>
             </div>
-            <img class="fullscreen" src={{fullImg}} (click)="onFullscreen()">
+            <i class="fullscreen full" (click)="onFullscreen()"></i>
         </div>
     </div>
 </div>

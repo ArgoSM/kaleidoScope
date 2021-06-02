@@ -24,9 +24,6 @@ export class WatchComponent implements OnInit, AfterViewInit {
   idleTimer = null;
   idleState = false;
   loading = true;
-  playImg="./../../assets/pause.svg";
-  fullImg="./../../assets/fullscreen.svg";
-  volImg="./../../assets/volume.svg";
   video: HTMLVideoElement;
   time: HTMLInputElement;
   vol: HTMLInputElement;
@@ -130,11 +127,13 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
   playClick(){
     if(this.video.paused){
-      this.playImg="./../../assets/pause.svg";
+      $(".play_pause").removeClass("play");
+      $(".play_pause").addClass("pause");
       this.video.play();
       this.showFoo();
     } else {
-      this.playImg="./../../assets/play-button-arrowhead.svg";
+      $(".play_pause").removeClass("pause");
+      $(".play_pause").addClass("play");
       this.video.pause();
       this.showFoo();
     }
@@ -151,7 +150,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
       } else if (this.elem.msRequestFullscreen) {
         this.elem.msRequestFullscreen();
       }
-      this.fullImg='./../../assets/fullscreen_close.svg'
+      $(".fullscreen").removeClass("full");
+      $(".fullscreen").addClass("small");
       this.isFull=true;
     } else {
       if (this.document.exitFullscreen) {
@@ -163,7 +163,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
       } else if (this.document.msExitFullscreen) {
         this.document.msExitFullscreen();
       }
-      this.fullImg='./../../assets/fullscreen.svg'
+      $(".fullscreen").removeClass("small");
+      $(".fullscreen").addClass("full");
       this.isFull=false;
     }
   }
@@ -174,10 +175,14 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
   volUpdate() {
     this.vol.style.background = 'linear-gradient( to right, #F15156 0%, #F15156 ' + this.vol.value + '%, rgba(0, 0, 0, 0.7) ' + this.vol.value + '%, rgba(0, 0, 0, 0.7) 100%)'
-    if(this.video.volume==0)
-      this.volImg="./../../assets/volume_mute.svg";
-    else
-      this.volImg="./../../assets/volume.svg";
+    if(this.video.volume==0){
+      $(".volume").removeClass("volume_normal");
+      $(".volume").addClass("mute");
+    }
+    else {
+      $(".volume").removeClass("mute");
+      $(".volume").addClass("volume_normal");
+    }
   }
 
   timeUpdate() {
