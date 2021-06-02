@@ -25,6 +25,11 @@
     height: max-content;
 }
 
+.gif_bg {
+    content: url('./../../assets/LLQr.gif');
+    width: 100%;
+}
+
 .video_container video {
     width: 100%;
 }

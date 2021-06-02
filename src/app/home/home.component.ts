@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   id="";
   src="";
   time="0";
-  show=false;
   show_deets=false;
+  src_null=true;
 
   constructor(private bknd: BkndService, private cookie: CookieService, private router: Router) { }
 
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.id=this.cookie.get('id');
       this.time=this.cookie.get('time');
       this.src=this.cookie.get('src');
-      this.show=true;
+      this.src_null=false;
     }
 
     this.bknd.getPopular("1").subscribe(data=> {
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.src!=null){
+    if(!this.src_null){
       this.video=this.videoPlayer.nativeElement;
       this.video.currentTime=parseInt(this.time);
       this.video.volume=0.7;

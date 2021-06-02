@@ -1,11 +1,12 @@
 <app-details *ngIf="show_deets" [details]="deet" (closeDeets)="closeDeets()"></app-details>
 <div class="parent scroll-hide">
-    <div *ngIf="show" class="video_container">
-        <video src={{src}} #video autoplay loop></video>
+    <div class="video_container">
+        <i class="gif_bg" *ngIf="src_null"></i>
+        <video src={{src}} #video autoplay loop *ngIf="!src_null"></video>
         <div class="layer"></div>
     </div>
     <div class="page">
-        <div class="button_holder">
+        <div class="button_holder" *ngIf="!src_null">
             <button class="watch_button" (click)="contWatch()"><i class="watch_icon"></i>Continue Watching</button>
             <i class="mute" (click)="muteVid()"></i>
         </div>
