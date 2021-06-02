@@ -100,7 +100,7 @@
 }
 
 .watch_icon {
-    content: url('./../../../assets/play-button-arrowhead-black.svg');
+    content: url('./../../../assets/play_button_arrowhead_black.svg');
 }
 
 .about_icon {
@@ -108,7 +108,7 @@
 }
 
 .episodes_icon {
-    content: url('./../../../assets/video-player.svg');
+    content: url('./../../../assets/video_player.svg');
 }
 
 .episodes {

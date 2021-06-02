@@ -47,7 +47,7 @@
 }
 
 .watch_icon {
-    content: url('./../../assets/play-button-arrowhead-black.svg');
+    content: url('./../../assets/play_button_arrowhead_black.svg');
     width: 14px;
     height: 14px;
     align-self: center;
@@ -143,7 +143,7 @@ p {
 }
 
 .explore {
-    content: url('./../../assets/right-arrow-white.svg');
+    content: url('./../../assets/right_arrow_white.svg');
     width: 30px;
     height: 30px;
     justify-self: center;

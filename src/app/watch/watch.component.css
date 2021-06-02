@@ -57,7 +57,7 @@ video {
 .back-arrow {
     cursor: pointer;
     padding: 3px;
-    content: url('./../../assets/left-arrow.svg');
+    content: url('./../../assets/left_arrow.svg');
     height: 45px;
     width: 35px;
 }
@@ -220,7 +220,7 @@ video {
 }
 
 .play {
-    content: url('./../../assets/play-button-arrowhead.svg');
+    content: url('./../../assets/play_button_arrowhead.svg');
 }
 
 .pause {
@@ -245,7 +245,7 @@ video {
 }
 
 .right {
-    content: url('./../../assets/fast-forward.svg');
+    content: url('./../../assets/fast_forward.svg');
 }
 
 .right:active {
