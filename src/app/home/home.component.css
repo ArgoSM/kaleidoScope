@@ -79,6 +79,7 @@
 }
 
 .mute {
+    content: url('./../../assets/volume_mute.svg');
     width: 25px;
     height: 25px;
     align-self: center;

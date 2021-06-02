@@ -24,6 +24,12 @@
     font-size: 20px;
 }
 
+.logo {
+    content: url('./../../../assets/ghost.svg');
+    width: 30px;
+    height: 30px;
+}
+
 .navbar-nav {
     text-align: center;
     padding-top: 2px;
