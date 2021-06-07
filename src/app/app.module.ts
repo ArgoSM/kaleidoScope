@@ -19,6 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BkndService } from './bknd.service';
 import { InterceptorService } from './subComponents/loader/interceptor.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InterceptorService } from './subComponents/loader/interceptor.service';
     DetailsComponent,
     WatchComponent,
     ClickOutsideDirective,
-    LoaderComponent
+    LoaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

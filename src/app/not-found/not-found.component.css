@@ -1,0 +1,26 @@
+
+.wrong_main {
+    position: absolute;
+    background: #040404;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrong_main p {
+    outline: 0;
+    border: 0;
+    color: #F4F4E6;
+}
+
+.oops {
+    font-weight: 600;
+    font-size: 80px;
+}
+
+.wrong_sub {
+    font-size: 20px;
+}
