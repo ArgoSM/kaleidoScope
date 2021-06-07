@@ -9,4 +9,7 @@
       <button class="page_button" *ngIf="show_prev" (click)="pager(page-1)"><i class="prev_icon"></i>{{page-1}}</button>
     </div>
   </div>
+  <div class="no_content" *ngIf="no_content">
+    <p><i class="ghost_icon"></i>Seems like there's nothing here...</p>
+  </div>
 </div>

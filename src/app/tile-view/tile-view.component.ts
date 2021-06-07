@@ -20,6 +20,7 @@ export class TileViewComponent implements OnInit {
   show_prev=false;
   show_next=false;
   page: number=1;
+  no_content=false;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -30,6 +31,8 @@ export class TileViewComponent implements OnInit {
         this.show_prev=true;
       this.animeList=null;
       this.show_deets=false;
+      this.show_next=false;
+      this.no_content=false;
       switch(this.id) {
           case "popular": {
             this.popular();
@@ -99,9 +102,10 @@ export class TileViewComponent implements OnInit {
       let a = Object.assign(new anime(),data["results"][d]);
       this.animeList.push(a);
     }
-    this.show_next=false;
     if(this.animeList.length==20)
       this.show_next=true;
+    if(this.animeList.length==0)
+      this.no_content=true;
   }
 
   pager(n) {
