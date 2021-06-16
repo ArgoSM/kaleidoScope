@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DOCUMENT, Location } from '@angular/common';
 import { anime } from '../interfaces/anime';
 import { CookieService } from 'ngx-cookie-service';
@@ -33,7 +33,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
   @ViewChild('timeMark') timeMark: ElementRef;
   @ViewChild('volumeControl') volumeControl: ElementRef;
 
-  constructor(private route: ActivatedRoute, @Inject(DOCUMENT) private document: any, private loc: Location, private cookie: CookieService) {}
+  constructor(private route: ActivatedRoute, @Inject(DOCUMENT) private document: any, private router: Router, private cookie: CookieService) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(data=> {
@@ -171,7 +171,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
   }
 
   goBack() {
-    this.loc.back();
+    console.log(sessionStorage.getItem('last'));
+    this.router.navigate([sessionStorage.getItem('last')]);
   }
 
   volUpdate() {

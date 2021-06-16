@@ -58,6 +58,7 @@ export class TileViewComponent implements OnInit {
 
   clickTile(an: anime) {
     if(an.episodenumber!=null) {
+      sessionStorage.setItem('last', this.router.url);
       this.router.navigate(['watch/',an.id,an.episodenumber]);
     } else {
       this.bknd.getDetails(an.id).subscribe(data=> {

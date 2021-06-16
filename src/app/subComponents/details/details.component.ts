@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { BkndService } from 'src/app/bknd.service';
 import { anime } from '../../interfaces/anime';
 
 @Component({
@@ -17,9 +16,10 @@ export class DetailsComponent implements OnInit {
   showEpisodes:boolean=false;
   movie:boolean=false;
 
-  constructor(private bknd: BkndService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
     if(this.details.totalepisode=="1"){
       this.movie=true;
     } else {
@@ -30,6 +30,7 @@ export class DetailsComponent implements OnInit {
   }
 
   watch(ep:string) {
+    sessionStorage.setItem('last', this.router.url);
     this.router.navigate(['watch/',this.details.id,ep]);
   }
 

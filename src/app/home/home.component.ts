@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private bknd: BkndService, private cookie: CookieService, private router: Router) { }
 
   ngOnInit() {
+    sessionStorage.clear();
     if(this.cookie.check('src')) {
       this.id=this.cookie.get('id');
       this.ep=this.cookie.get('ep');
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   contWatch() {
+    sessionStorage.setItem('last', this.router.url);
     this.router.navigate(['watch/',this.id,this.ep]);
   }
 
@@ -89,6 +91,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   clickTile(an: anime) {
     if(an.episodenumber!=null) {
+      sessionStorage.setItem('last', this.router.url);
       this.router.navigate(['watch/',an.id,an.episodenumber]);
     } else {
       this.bknd.getDetails(an.id).subscribe(data=> {
