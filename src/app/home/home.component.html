@@ -2,30 +2,31 @@
 <div class="parent scroll-hide">
     <div class="video_container">
         <i class="gif_bg" *ngIf="src_null"></i>
-        <video src={{src}} #video autoplay loop *ngIf="!src_null"></video>
+        <video src={{src}} #video autoplay *ngIf="!src_null"></video>
         <div class="layer"></div>
     </div>
     <div class="page">
         <div class="button_holder" *ngIf="!src_null">
+            <p class="title">{{title}}</p>
             <button class="watch_button" (click)="contWatch()"><i class="watch_icon"></i>Continue Watching</button>
-            <i class="mute" (click)="muteVid()"></i>
+            <i class="volume volume_normal" (click)="muteVid()"></i>
         </div>
-        <p>Recents</p>
+        <p class="regular_text">Recents</p>
         <div class="list_container scroll-hide">
             <app-tile *ngFor="let anime of recentList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
             <div class="last_tile">
                 <div class="child_container" routerLink="/tileView/recents/2">
-                    <p>Explore More</p>
+                    <p class="regular_text">Explore More</p>
                     <i class="explore"></i>
                 </div>
             </div>
         </div>
-        <p>Popular</p>
+        <p class="regular_text">Popular</p>
         <div class="list_container scroll-hide">
             <app-tile *ngFor="let anime of popularList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
             <div class="last_tile">
                 <div class="child_container" routerLink="/tileView/popular/2">
-                    <p>Explore More</p>
+                    <p class="regular_text">Explore More</p>
                     <i class="explore"></i>
                 </div>
             </div>

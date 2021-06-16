@@ -71,6 +71,7 @@ export class WatchComponent implements OnInit, AfterViewInit {
     this.cookie.set('id',this.deet.id);
     this.cookie.set('ep',this.ep);
     this.cookie.set('src',this.src);
+    this.cookie.set('title',this.deet.title);
 
     this.video.addEventListener('timeupdate', ()=> {
       if(!this.loading){

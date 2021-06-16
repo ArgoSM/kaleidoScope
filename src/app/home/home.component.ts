@@ -3,6 +3,7 @@ import { anime } from '../interfaces/anime';
 import { BkndService } from './../bknd.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +18,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   video: HTMLVideoElement;
   @ViewChild('video') videoPlayer: ElementRef;
   id="";
+  ep="";
   src="";
-  time="0";
+  title="";
+  time=0;
   show_deets=false;
   src_null=true;
 
@@ -27,7 +30,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     if(this.cookie.check('src')) {
       this.id=this.cookie.get('id');
-      this.time=this.cookie.get('time');
+      this.ep=this.cookie.get('ep');
+      this.title=this.cookie.get('title');
+      this.time=parseInt(this.cookie.get('time'));
       this.src=this.cookie.get('src');
       this.src_null=false;
     }
@@ -52,20 +57,34 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if(!this.src_null){
       this.video=this.videoPlayer.nativeElement;
-      this.video.currentTime=parseInt(this.time);
+      this.video.currentTime=this.time;
       this.video.volume=0.7;
+      this.time=this.time+30;
+
+      this.video.addEventListener('timeupdate', ()=> {
+        if(this.video.currentTime>=this.time) {
+          this.video.pause();
+          $(".title").addClass("big");
+          $(".page").addClass("shade");
+        }
+      });
     }
   }
 
   contWatch() {
-    this.router.navigate(['watch/',this.cookie.get('id'),this.cookie.get('ep')]);
+    this.router.navigate(['watch/',this.id,this.ep]);
   }
 
   muteVid() {
-    if(this.video.volume==0)
+    if(this.video.volume==0) {
       this.video.volume=0.7;
-    else
+      $(".volume").removeClass("mute");
+      $(".volume").addClass("volume_normal");
+    } else {
       this.video.volume=0;
+      $(".volume").removeClass("volume_normal");
+      $(".volume").addClass("mute");
+    }
   }
 
   clickTile(an: anime) {
