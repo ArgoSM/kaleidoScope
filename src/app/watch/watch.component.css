@@ -202,6 +202,7 @@ video {
 }
 
 .plaback_container {
+    position: relative;
     width: max-content;
     height: min-content;
     display: flex;
@@ -256,6 +257,34 @@ video {
 
 .left:active {
     transform: rotate(-75deg);
+}
+
+.playback_sides {
+    position: absolute;
+    margin-top: 20px;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    margin-bottom: 30px;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2 ease;
+}
+
+.playback_sides:active {
+    transform: scale(0.7);
+}
+
+.forwardep {
+    margin-left: -120px;
+    content: url('./../../assets/goforward_ep.png');
+}
+
+.backep {
+    margin-left: 70px;
+    content: url('./../../assets/goback_ep.png');
 }
 
 .controls {
@@ -324,6 +353,7 @@ video {
 
 .time-show {
     font-size: 12px;
+    font-weight: 500;
     color: #F4F4E6;
     margin-left: 5px;
     margin-right: 2px;

@@ -21,6 +21,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
   elem:any;
   lastVol: number=100;
   timeLeft: string="";
+  forwardep=false;
+  backep=false;
   idleTimer = null;
   idleState = false;
   loading = true;
@@ -37,15 +39,25 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(data=> {
+      this.forwardep=false;
+      this.backep=false;
       this.srcMap=new Map<string,string>();
       this.deet=Object.assign(new anime(),data["detail"]["results"][0]);
+      
       this.route.params.subscribe(params => {
         this.ep=params["ep"];
         this.deet.id=params["id"];
       });
+      
       this.src=data["watch"]["links"][0]["src"];
+
       for (let d in data["watch"]["links"])
         this.srcMap.set(data["watch"]["links"][d]["size"], data["watch"]["links"][d]["src"]);
+      
+      if(parseInt(this.deet.totalepisode)>parseInt(this.ep)) 
+        this.forwardep=true;
+      if(parseInt(this.ep)>0)
+        this.backep=true;
     });
   }
   
@@ -86,6 +98,12 @@ export class WatchComponent implements OnInit, AfterViewInit {
     this.video.addEventListener('seeking', ()=> {this.loading=true;});
     this.video.addEventListener('loadeddata',()=>{this.loading=false;});
     this.video.addEventListener('seeked', ()=>{this.loading=false;});
+    this.video.addEventListener('ended', ()=>{
+      if(this.forwardep) {
+        this.router.navigate(['/watch',this.deet.id,(parseInt(this.ep)+1).toString()]);
+      } else
+        this.video.pause();
+    })
 
     this.vol.addEventListener('input', ()=>{
       this.video.volume = Number(this.vol.value)/100;
@@ -168,6 +186,10 @@ export class WatchComponent implements OnInit, AfterViewInit {
       $(".fullscreen").addClass("full");
       this.isFull=false;
     }
+  }
+
+  epNav(e: number) {
+    this.router.navigate(['/watch',this.deet.id,(parseInt(this.ep)+e).toString()])
   }
 
   goBack() {

@@ -24,9 +24,11 @@
         </div>
         <div *ngIf="!loading" class="playbackControl">
             <div class="playback_container">
+                <i class="playback_sides forwardep" *ngIf="forwardep" (click)="epNav(1)"></i>
                 <i class="playback_others left" (click)="skip(-10)"></i>
                 <i class="play_pause pause" (click)="playClick()"></i>
                 <i class="playback_others right" (click)="skip(10)"></i>
+                <i class="playback_sides backep" *ngIf="backep" (click)="epNav(-1)"></i>
             </div>
         </div>
         <app-loader *ngIf="loading"></app-loader>
