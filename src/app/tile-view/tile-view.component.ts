@@ -91,10 +91,10 @@ export class TileViewComponent implements OnInit {
   }
 
   listData(data) {
-    this.animeList=null;
-    this.show_prev=false;
     if(this.page>1) 
       this.show_prev=true;
+    this.animeList=null;
+    this.show_prev=false;
     this.show_deets=false;
     this.show_next=false;
     this.no_content=false;
@@ -105,7 +105,8 @@ export class TileViewComponent implements OnInit {
     }
     if(this.animeList.length==20)
       this.show_next=true;
-    else if(this.animeList.length==0)
+
+    if(this.animeList.length==0)
       this.no_content=true;
   }
 

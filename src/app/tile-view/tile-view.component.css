@@ -22,8 +22,9 @@
     position: relative;
     width: 100%;
     height: max-content;
-    display:flex;
-    flex-wrap: wrap;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
     padding-bottom: 40px;
 }
 

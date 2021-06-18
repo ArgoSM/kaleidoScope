@@ -3,7 +3,6 @@
     max-height: min-content;
     position: relative;
     display: flex;
-    margin: 15px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
 }
