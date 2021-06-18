@@ -26,13 +26,6 @@ export class TileViewComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id=params['id'];
       this.page=parseInt(params['page']);
-      this.show_prev=false;
-      if(this.page>1) 
-        this.show_prev=true;
-      this.animeList=null;
-      this.show_deets=false;
-      this.show_next=false;
-      this.no_content=false;
       switch(this.id) {
           case "popular": {
             this.popular();
@@ -98,6 +91,13 @@ export class TileViewComponent implements OnInit {
   }
 
   listData(data) {
+    this.animeList=null;
+    this.show_prev=false;
+    if(this.page>1) 
+      this.show_prev=true;
+    this.show_deets=false;
+    this.show_next=false;
+    this.no_content=false;
     this.animeList=[];
     for (let d in data["results"]){
       let a = Object.assign(new anime(),data["results"][d]);
@@ -105,7 +105,7 @@ export class TileViewComponent implements OnInit {
     }
     if(this.animeList.length==20)
       this.show_next=true;
-    if(this.animeList.length==0)
+    else if(this.animeList.length==0)
       this.no_content=true;
   }
 
