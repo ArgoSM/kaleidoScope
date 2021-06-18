@@ -6,6 +6,7 @@
         <div class="layer"></div>
     </div>
     <div class="page">
+        <div class="button_placeholder" *ngIf="src_null"></div>
         <div class="button_holder" *ngIf="!src_null">
             <p class="title">{{title}}</p>
             <button class="watch_button" (click)="contWatch()"><i class="watch_icon"></i>Continue Watching</button>
