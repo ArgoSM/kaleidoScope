@@ -103,8 +103,8 @@ video {
     margin-left: 15px;
     cursor: pointer;
     padding: 3px;
-    height: 40px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
 }
 
 .speed {
@@ -113,6 +113,10 @@ video {
 
 .sett {
     content: url('././../../assets/settings.svg');
+}
+
+.ep {
+    content: url('./../../assets/layers.png');
 }
 
 .drop_container {
@@ -131,12 +135,22 @@ video {
     opacity: 1;
 }
 
+.ep:hover ~.sub_drop_ep {
+    visibility: visible;
+    opacity: 1;
+}
+
 .sub_drop_quality:hover {
     visibility: visible;
     opacity: 1;
 }
 
 .sub_drop_speed:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sub_drop_ep:hover {
     visibility: visible;
     opacity: 1;
 }
@@ -175,22 +189,63 @@ video {
     transition: opacity 0.2s ease-in-out;
 }
 
+.sub_drop_ep {
+    position: absolute;
+    left: -190px;
+    width: 250px;
+    height: min-content;
+    max-height: 250px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: -10px;
+    display:flex;
+    flex-flow: row wrap;
+    overflow-y: scroll;
+    justify-content: space-evenly;
+    color: #F4F4E6;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.button_ep {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: #f15156e9;
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
 .button {
     cursor: pointer;
     margin: 5px;
     font-size: 12px;
     font-weight: 500;
     align-self:flex-end;
-    display: block;
     width: max-content;
     padding: 4px 8px 4px 8px;
     border-radius: 10px;
-    background: #f15156bf;
+    background: #f15156e9;
     backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .button:active {
-    background: #f15156;
+    background: #6a1e20;
+}
+
+.button_ep:active {
+    background: #6a1e20;
 }
 
 .playbackControl {

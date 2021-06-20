@@ -26,6 +26,8 @@ export class WatchComponent implements OnInit, AfterViewInit {
   idleTimer = null;
   idleState = false;
   loading = true;
+  movie=false;
+  episodes:number[]=[];
   video: HTMLVideoElement;
   time: HTMLInputElement;
   vol: HTMLInputElement;
@@ -58,6 +60,14 @@ export class WatchComponent implements OnInit, AfterViewInit {
         this.forwardep=true;
       if(parseInt(this.ep)>0)
         this.backep=true;
+    
+      if(this.deet.totalepisode=="1"){
+        this.movie=true;
+      } else {
+        this.episodes=[];
+        for(let i=parseInt(this.deet.totalepisode);i>=1;i--)
+        this.episodes.push(i);
+      }
     });
   }
   
@@ -101,8 +111,12 @@ export class WatchComponent implements OnInit, AfterViewInit {
     this.video.addEventListener('ended', ()=>{
       if(this.forwardep) {
         this.router.navigate(['/watch',this.deet.id,(parseInt(this.ep)+1).toString()]);
-      } else
+      } else {
+        $(".play_pause").removeClass("pause");
+        $(".play_pause").addClass("play");
         this.video.pause();
+        this.showFoo();
+      }
     })
 
     this.vol.addEventListener('input', ()=>{
@@ -189,7 +203,18 @@ export class WatchComponent implements OnInit, AfterViewInit {
   }
 
   epNav(e: number) {
-    this.router.navigate(['/watch',this.deet.id,(parseInt(this.ep)+e).toString()])
+    if(e!=parseInt(this.ep)) {
+      this.video.pause();
+      this.loading=true;
+      switch(e) {
+        case 1: 
+        case -1: {
+          this.router.navigate(['/watch',this.deet.id,(parseInt(this.ep)+e).toString()]);
+          break;
+        }
+        default: this.router.navigate(['/watch',this.deet.id,e])
+      }
+    }
   }
 
   goBack() {

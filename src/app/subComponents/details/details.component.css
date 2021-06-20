@@ -142,6 +142,10 @@
     place-items: center;
 }
 
+.episode:active {
+    background-color: #2b6840;
+}
+
 @media screen and (max-width: 770px) {
     .maincard {
         width: 75%;
