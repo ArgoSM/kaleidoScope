@@ -11,12 +11,18 @@
 
 .maincard {
     position: relative;
-    width: 60%;
+    width: 65%;
     height: 70%;
-    display: block;
-    margin: 40px auto;
+    display: flex;
+    flex-direction: row;
     border-radius: 10px;
     box-shadow: 0px 20px 60px 20px rgb(0, 0, 0);
+}
+
+.poster {
+    position: relative;
+    height: 100%;
+    border-radius: 10px 0px 0px 10px;
 }
 
 .text-area {
@@ -95,7 +101,8 @@
 .button_icon {
     width: 13px;
     height: 13px;
-    margin-right: 5px;
+    margin-right: 4px;
+    margin-left: 2px;
     align-self: center;
 }
 
@@ -115,10 +122,9 @@
     width: 100%;
     height: max-content;
     display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-flow: row wrap;
     overflow-y: scroll;
+    justify-content: space-evenly;
     padding: 5px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
@@ -131,22 +137,25 @@
     margin: 8px;
     border-radius: 2px;
     background-color: #57A773;
-    text-align: center;
     font-size: 14px;
-}
-
-@media screen and (min-width: 770px) {
-    .maincard {
-        padding-left: 21%;
-    }
+    display: grid;
+    place-items: center;
 }
 
 @media screen and (max-width: 770px) {
     .maincard {
-        padding-top: 21%;
+        width: 75%;
+        height: 80%;
+    }
+
+    .poster {
+        position: absolute;
+        width: 100%;
+        border-radius: 10px;
     }
 
     .text-area {
-        border-radius: 0px 0px 10px 10px;
+        height: 100%;
+        border-radius: 10px;
     }
 }

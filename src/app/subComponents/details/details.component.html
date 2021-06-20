@@ -1,9 +1,6 @@
 <div class="page">
-    <div class="maincard" (clickOutside)="ClickOutside()" 
-        style="background: url({{details.image}});
-        background-size: contain; 
-        background-repeat: no-repeat; 
-        background-position: left top; ">
+    <div class="maincard" (clickOutside)="ClickOutside()" >
+        <img src={{details.image}} class="poster">
         <div class="text-area">
             <div class="titles">
                 <h2>{{details.title}}</h2>
