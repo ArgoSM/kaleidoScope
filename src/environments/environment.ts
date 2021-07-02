@@ -5,7 +5,7 @@ export const environment = {
   popular: url.api+'popular/',
   details: url.api+'details/',
   search: url.api+'search/',
-  watching: url.api+'watching/',
+  watching: url.api_ninja+'watching/',
   genre: url.api+'genre/',
   recentadd: url.api+'recentlyadded/'
 };
