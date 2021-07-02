@@ -91,14 +91,15 @@ export class TileViewComponent implements OnInit {
   }
 
   listData(data) {
-    if(this.page>1) 
-      this.show_prev=true;
-    this.animeList=null;
     this.show_prev=false;
+    this.animeList=null;
     this.show_deets=false;
     this.show_next=false;
     this.no_content=false;
     this.animeList=[];
+    
+    if(this.page>1) 
+      this.show_prev=true;
     for (let d in data["results"]){
       let a = Object.assign(new anime(),data["results"][d]);
       this.animeList.push(a);

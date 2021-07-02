@@ -55,18 +55,19 @@ export class WatchComponent implements OnInit, AfterViewInit {
 
       for (let d in data["watch"]["links"])
         this.srcMap.set(data["watch"]["links"][d]["size"], data["watch"]["links"][d]["src"]);
-      
-      if(parseInt(this.deet.totalepisode)>parseInt(this.ep)) 
-        this.forwardep=true;
-      if(parseInt(this.ep)>0)
-        this.backep=true;
     
       if(this.deet.totalepisode=="1"){
         this.movie=true;
       } else {
         this.episodes=[];
+        
         for(let i=parseInt(this.deet.totalepisode);i>=1;i--)
         this.episodes.push(i);
+
+        if(parseInt(this.deet.totalepisode)>parseInt(this.ep)) 
+          this.forwardep=true;
+        if(parseInt(this.ep)>1)
+          this.backep=true;
       }
     });
   }
