@@ -1,12 +1,24 @@
-<app-details *ngIf="show_deets" [details]="deet" (closeDeets)="closeDeets()" ></app-details>
+<app-details
+  *ngIf="show_deets"
+  [details]="deet"
+  (closeDeets)="closeDeets()"
+></app-details>
 <div class="parent scroll-hide">
   <div class="page">
     <div class="grid-container">
-      <app-tile *ngFor="let anime of animeList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
+      <app-tile
+        *ngFor="let anime of animeList"
+        [tileData]="anime"
+        (click)="clickTile(anime)"
+      ></app-tile>
     </div>
     <div class="pager">
-      <button class="page_button" *ngIf="show_next" (click)="pager(page+1)">{{page+1}}<i class="next_icon"></i></button>
-      <button class="page_button" *ngIf="show_prev" (click)="pager(page-1)"><i class="prev_icon"></i>{{page-1}}</button>
+      <button class="page_button" *ngIf="show_next" (click)="pager(page + 1)">
+        {{ page + 1 }}<i class="next_icon"></i>
+      </button>
+      <button class="page_button" *ngIf="show_prev" (click)="pager(page - 1)">
+        <i class="prev_icon"></i>{{ page - 1 }}
+      </button>
     </div>
   </div>
   <div class="no_content" *ngIf="no_content">

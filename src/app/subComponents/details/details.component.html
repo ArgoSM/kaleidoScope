@@ -1,24 +1,44 @@
 <div class="page">
-    <div class="maincard" (clickOutside)="ClickOutside()" >
-        <img src={{details.image}} class="poster">
-        <div class="text-area">
-            <div class="titles">
-                <h2>{{details.title}}</h2>
-                <h6>{{details.Othername}}</h6>
-                <p class="otherstuff">{{details.released}} {{details.status}}</p>
-            </div>
-            <div class="tab-switch">
-                <p class="button" (click)="showAbout=true; showEpisodes=false"><i class="button_icon about_icon"></i>ABOUT</p>
-                <p class="button" *ngIf="!movie" (click)="showEpisodes=true; showAbout=false"><i class="button_icon episodes_icon"></i>EPISODES</p>
-                <p class="button" *ngIf="movie" (click)="watch('1')"><i class="button_icon watch_icon"></i>WATCH</p>
-            </div>
-            <div class="summary custom_scroll" *ngIf="showAbout">{{details.summary}}</div>
-            <div class="episodes custom_scroll" *ngIf="showEpisodes">
-                <p *ngFor="let ep of episodes" class="episode" (click)="watch(ep)">{{ep}}</p>
-            </div>
-            <div class="others" *ngIf="showAbout" >
-                <p class="button" *ngFor="let genre of details.genres.split(',')" (click)="routeGenre(genre)">{{genre}}</p>
-            </div>
-        </div>
+  <div class="maincard" (clickOutside)="ClickOutside()">
+    <img src="{{ details.images.webp.large_image_url }}" class="poster" />
+    <div class="text-area">
+      <div class="titles">
+        <h2>{{ details.title }}</h2>
+        <h6>{{ details.title_japanese }}</h6>
+        <p class="otherstuff">{{ details.aired.from }} {{ details.airing }}</p>
+      </div>
+      <div class="tab-switch">
+        <p class="button" (click)="showAbout = true; showEpisodes = false">
+          <i class="button_icon about_icon"></i>ABOUT
+        </p>
+        <p
+          class="button"
+          *ngIf="!movie"
+          (click)="showEpisodes = true; showAbout = false"
+        >
+          <i class="button_icon episodes_icon"></i>EPISODES
+        </p>
+        <p class="button" *ngIf="movie" (click)="watch('1')">
+          <i class="button_icon watch_icon"></i>WATCH
+        </p>
+      </div>
+      <div class="summary custom_scroll" *ngIf="showAbout">
+        {{ details.synopsis }}
+      </div>
+      <div class="episodes custom_scroll" *ngIf="showEpisodes">
+        <p *ngFor="let ep of episodes" class="episode" (click)="watch(ep)">
+          {{ ep }}
+        </p>
+      </div>
+      <div class="others" *ngIf="showAbout">
+        <p
+          class="button"
+          *ngFor="let genre of details.genres"
+          (click)="routeGenre(genre.mal_id)"
+        >
+          {{ genre.name }}
+        </p>
+      </div>
     </div>
+  </div>
 </div>

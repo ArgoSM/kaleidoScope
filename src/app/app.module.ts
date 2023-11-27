@@ -12,12 +12,10 @@ import { TileViewComponent } from './tile-view/tile-view.component';
 import { DetailsComponent } from './subComponents/details/details.component';
 import { WatchComponent } from './watch/watch.component';
 import { WatchResolverGuard } from './watch/watch-resolver.guard';
-import { DetailsResolverGuard } from './subComponents/details/details-resolver.guard';
 import { ClickOutsideDirective } from './subComponents/details/click-outside.directive';
 import { LoaderComponent } from './subComponents/loader/loader.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { BkndService } from './bknd.service';
 import { InterceptorService } from './subComponents/loader/interceptor.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -33,21 +31,20 @@ import { NotFoundComponent } from './not-found/not-found.component';
     WatchComponent,
     ClickOutsideDirective,
     LoaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   providers: [
     WatchResolverGuard,
-    DetailsResolverGuard,
     CookieService,
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

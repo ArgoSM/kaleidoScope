@@ -1,36 +1,49 @@
-<app-details *ngIf="show_deets" [details]="deet" (closeDeets)="closeDeets()"></app-details>
-<div class="parent scroll-hide">
-    <div class="video_container">
-        <i class="gif_bg" *ngIf="src_null"></i>
-        <video src={{src}} #video autoplay *ngIf="!src_null"></video>
-        <div class="layer"></div>
+<app-details
+  *ngIf="show_deets"
+  [details]="deet"
+  (closeDeets)="closeDeets()"
+></app-details>
+<div class="parent scroll-hide gif_bg">
+  <div class="video_container">
+    <video src="{{ src }}" #video autoplay *ngIf="!src_null"></video>
+    <div class="layer"></div>
+  </div>
+  <div class="page">
+    <div class="button_placeholder" *ngIf="src_null"></div>
+    <div class="button_holder" *ngIf="!src_null">
+      <p class="title">{{ title }}</p>
+      <button class="watch_button" (click)="contWatch()">
+        <i class="watch_icon"></i>Continue Watching
+      </button>
+      <i class="volume volume_normal" (click)="muteVid()"></i>
     </div>
-    <div class="page">
-        <div class="button_placeholder" *ngIf="src_null"></div>
-        <div class="button_holder" *ngIf="!src_null">
-            <p class="title">{{title}}</p>
-            <button class="watch_button" (click)="contWatch()"><i class="watch_icon"></i>Continue Watching</button>
-            <i class="volume volume_normal" (click)="muteVid()"></i>
+    <p class="regular_text">Recents</p>
+    <div class="list_container scroll-hide">
+      <app-tile
+        *ngFor="let anime of recentList"
+        [tileData]="anime"
+        (click)="clickTile(anime)"
+      ></app-tile>
+      <div class="last_tile">
+        <div class="child_container" routerLink="/tileView/recents/2">
+          <p class="regular_text">Explore More</p>
+          <i class="explore"></i>
         </div>
-        <p class="regular_text">Recents</p>
-        <div class="list_container scroll-hide">
-            <app-tile *ngFor="let anime of recentList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
-            <div class="last_tile">
-                <div class="child_container" routerLink="/tileView/recents/2">
-                    <p class="regular_text">Explore More</p>
-                    <i class="explore"></i>
-                </div>
-            </div>
-        </div>
-        <p class="regular_text">Popular</p>
-        <div class="list_container scroll-hide">
-            <app-tile *ngFor="let anime of popularList" [tileData]="anime" (click)="clickTile(anime)"></app-tile>
-            <div class="last_tile">
-                <div class="child_container" routerLink="/tileView/popular/2">
-                    <p class="regular_text">Explore More</p>
-                    <i class="explore"></i>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <p class="regular_text">Popular</p>
+    <div class="list_container scroll-hide">
+      <app-tile
+        *ngFor="let anime of popularList"
+        [tileData]="anime"
+        (click)="clickTile(anime)"
+      ></app-tile>
+      <div class="last_tile">
+        <div class="child_container" routerLink="/tileView/popular/2">
+          <p class="regular_text">Explore More</p>
+          <i class="explore"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
